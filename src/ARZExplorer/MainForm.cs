@@ -615,5 +615,32 @@ namespace ArzExplorer
 				e.Effect = DragDropEffects.None;
 			}
 		}
+
+		private void saveAsMenuItem_Click(object sender, EventArgs e)
+		{
+			if (!pictureBoxItem.Image.Size.IsEmpty)
+			{
+				using (var dlg = new SaveFileDialog())
+				{
+					dlg.Filter = "Portable Network Grafics (*.png)|*.png|Bitmap files (*.bmp)|*.bmp|Image files (*.jpg)|*.jpg";
+					dlg.FileName = Path.GetFileNameWithoutExtension(this.destFile);
+					if (dlg.ShowDialog() == DialogResult.OK)
+					{
+						var ext = Path.GetExtension(dlg.FileName);
+						System.Drawing.Imaging.ImageFormat format = null;
+						switch (ext)
+						{
+							case ".png":	format = System.Drawing.Imaging.ImageFormat.Png; break;
+							case ".bmp":	format = System.Drawing.Imaging.ImageFormat.Bmp; break;
+							case ".jpg":	format = System.Drawing.Imaging.ImageFormat.Jpeg; break;
+							default:
+								break;
+						}
+
+						pictureBoxItem.Image.Save(dlg.FileName, format);
+					}
+				}
+			}
+		}
 	}
 }

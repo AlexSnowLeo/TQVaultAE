@@ -97,6 +97,7 @@ namespace ArzExplorer
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -110,12 +111,15 @@ namespace ArzExplorer
             this.textBoxDetails = new System.Windows.Forms.TextBox();
             this.pictureBoxItem = new System.Windows.Forms.PictureBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.pictureContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.saveAsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.pictureContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -228,6 +232,7 @@ namespace ArzExplorer
             // 
             // pictureBoxItem
             // 
+            this.pictureBoxItem.ContextMenuStrip = this.pictureContextMenu;
             this.pictureBoxItem.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBoxItem.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxItem.MinimumSize = new System.Drawing.Size(50, 0);
@@ -256,6 +261,20 @@ namespace ArzExplorer
             this.splitContainer1.SplitterDistance = 369;
             this.splitContainer1.TabIndex = 15;
             // 
+            // pictureContextMenu
+            // 
+            this.pictureContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveAsMenuItem});
+            this.pictureContextMenu.Name = "pictureContextMenu";
+            this.pictureContextMenu.Size = new System.Drawing.Size(181, 48);
+            // 
+            // saveAsMenuItem
+            // 
+            this.saveAsMenuItem.Name = "saveAsMenuItem";
+            this.saveAsMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsMenuItem.Text = "Save picture as ...";
+            this.saveAsMenuItem.Click += new System.EventHandler(this.saveAsMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -280,6 +299,7 @@ namespace ArzExplorer
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.pictureContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -288,6 +308,8 @@ namespace ArzExplorer
 		#endregion
 
 		private System.Windows.Forms.SplitContainer splitContainer1;
+		private System.Windows.Forms.ContextMenuStrip pictureContextMenu;
+		private System.Windows.Forms.ToolStripMenuItem saveAsMenuItem;
 	}
 }
 
